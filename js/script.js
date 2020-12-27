@@ -9,7 +9,8 @@
 
 // window.addEventListener('scroll', headerScroll);
 
-const menu = document.querySelector('.menu-burger'),
+if (document.querySelector('.menu-burger')) {
+	const menu = document.querySelector('.menu-burger'),
 	menuBody = document.querySelector('.menu-burger__body');
 
 menu.addEventListener('click', () => {
@@ -21,6 +22,7 @@ menu.addEventListener('click', () => {
 		document.body.style.overflowY = 'visible';
 	}
 });
+}
 
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
@@ -397,7 +399,7 @@ if (document.querySelectorAll('.autors').length > 0) {
 			{
 				breakpoint: 1001,
 				settings: {
-					
+					slidesToShow: 5,
 					infinite: false,
 					centerMode: false,
 					variableWidth: true,
@@ -440,8 +442,7 @@ if (document.querySelectorAll('.inside-slider').length > 0) {
 			{
 				breakpoint: 701,
 				settings: {
-					centerMode: true,
-					centerPadding: '140px',
+					variableWidth: false,
 				}
 			},
 		]
@@ -457,6 +458,13 @@ if (document.querySelectorAll('.inside-slider').length > 0) {
 		responsive: [
 			{
 				breakpoint: 701,
+				settings: {
+					slidesToShow: 2,
+					variableWidth: false,
+				}
+			},
+			{
+				breakpoint: 376,
 				settings: {
 					slidesToShow: 2,
 					variableWidth: true,
@@ -938,15 +946,10 @@ if (document.querySelectorAll('.spoil').length > 0) {
 
 if (isMobile.any()) {
 	if(document.querySelector('.header__bottom-search')) {
-		const search = document.querySelector('.header__bottom-search');
+		const search = document.querySelector('.header__bottom-search-icon');
 
 		search.addEventListener('click', (e) => {
-			if (e.target.closest('.header__bottom-search')) {
-				search.classList.add('active');
-			} 
-			if (e.target.closest('.header__bottom-search-icon')) {
-				search.classList.remove('active');
-			}
+			document.querySelector('.header__bottom-search').classList.toggle('active');
 		});
 	}
 }
