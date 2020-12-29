@@ -1,13 +1,13 @@
-// const headerScroll = () => {
-// 	const header = document.querySelector('.header');
-// 	if (window.pageYOffset > 40) {
-// 		header.classList.add('fixed');
-// 	} else {
-// 		header.classList.remove('fixed');
-// 	}
-// };
+const headerScroll = () => {
+	const header = document.querySelector('.header__bottom');
+	if (window.pageYOffset > 180) {
+		header.classList.add('fixed');
+	} else {
+		header.classList.remove('fixed');
+	}
+};
 
-// window.addEventListener('scroll', headerScroll);
+window.addEventListener('scroll', headerScroll);
 
 if (document.querySelector('.menu-burger')) {
 	const menu = document.querySelector('.menu-burger'),
@@ -1091,7 +1091,8 @@ const hoverMenu = (element, dropdown) => {
 const menuTop = document.querySelectorAll('.menu-top'),
 	  menuTopBody = document.querySelectorAll('.menu-top__body'),
 	  navBottomItem = document.querySelectorAll('.nav-bottom__item'),
-	  contentItem = document.querySelectorAll('.content-item');
+	  contentItem = document.querySelectorAll('.content-item'),
+	  actionsBottomAvatar = document.querySelectorAll('.actions-bottom__avatar');
 
 
 
@@ -1101,4 +1102,40 @@ menuTop.forEach(item => {
 
 navBottomItem.forEach(item => {
 	item.addEventListener('mouseenter', hoverMenu(navBottomItem, '.content-item'));
+	if (isMobile.any()) {
+		item.addEventListener('click', () => {
+			const dropdownElement = item.querySelector('.content-item');
+			dropdownElement.classList.toggle('active');
+		});
+	}
 });
+
+actionsBottomAvatar.forEach(item => {
+	item.addEventListener('mouseenter', hoverMenu(actionsBottomAvatar, '.menu-avatar'));
+});
+
+window.addEventListener('resize', function() {
+	adaptive_function();
+});
+
+function adaptiveMenu(w,h) {
+	if (w < 501) {
+		navBottomItem.forEach(item => {
+			item.addEventListener('mouseenter', hoverMenu(navBottomItem, '.content-item'));
+			if (isMobile.any()) {
+				item.addEventListener('click', () => {
+					const dropdownElement = item.querySelector('.content-item');
+					$(dropdownElement).slideToggle();
+				});
+			}
+		});
+}
+}
+
+function adaptive_function() {
+	let w = window.screen.width;
+	let h = window.screen.height;
+	adaptiveMenu(w,h);
+}
+
+adaptive_function();
