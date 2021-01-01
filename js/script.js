@@ -1137,11 +1137,19 @@ const hoverMenu = (element, dropdown) => {
 
 };
 
+const navSettings = (settingsButton, settings) => {
+	document.querySelector(settingsButton).addEventListener('click', () => {
+		document.querySelector(settingsButton).classList.toggle('active');
+		$(settings).slideToggle();
+	});
+}
+
 const menuTop = document.querySelectorAll('.menu-top'),
 	  menuTopBody = document.querySelectorAll('.menu-top__body'),
 	  navBottomItem = document.querySelectorAll('.nav-bottom__item'),
 	  contentItem = document.querySelectorAll('.content-item'),
-	  actionsBottomAvatar = document.querySelectorAll('.actions-bottom__avatar');
+	  actionsBottomAvatar = document.querySelectorAll('.actions-bottom__avatar'),
+	  settingsButton = document.querySelector('.settings-button');
 
 
 
@@ -1163,3 +1171,4 @@ actionsBottomAvatar.forEach(item => {
 	item.addEventListener('mouseenter', hoverMenu(actionsBottomAvatar, '.menu-avatar'));
 });
 
+settingsButton.addEventListener('click', navSettings('.settings-button', '.catalog__side-settings'));
