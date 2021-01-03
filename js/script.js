@@ -1195,3 +1195,23 @@ if (document.querySelector('.alerts__header-btn')) {
 		}
 	});
 }
+
+//=====================================================Checking checkbox====================================================
+
+const publicationActions = document.querySelectorAll('.publication-actions');
+
+const checkInput = () => {
+	for (publicationAction of publicationActions) {
+			const publicationCheckbox = publicationAction.querySelector('input');
+			if (publicationCheckbox.checked) {
+				publicationAction.classList.add('active');
+			} else {
+				publicationAction.classList.remove('active');
+			}
+	}
+};
+
+publicationActions.forEach(item => {
+	item.addEventListener('click', checkInput);
+});
+	  
