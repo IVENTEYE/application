@@ -1192,10 +1192,9 @@ if (publicationActions.length > 0) {
 	});
 }
 
-const publicationsCeckbox = document.querySelectorAll('.publications__checkbox'),
-	  actionPublications = document.querySelectorAll('.publications__tabs-action');
+const actionPublications = document.querySelectorAll('.publications__tabs-action');
 
-if (publicationsCeckbox.length > 0) {
+if (actionPublications.length > 0) {
 	for (actionPublication of actionPublications) {
 		const checkbox = actionPublication.querySelector('.publications__checkbox');
 		if (checkbox) {
@@ -1203,6 +1202,66 @@ if (publicationsCeckbox.length > 0) {
 				if (checkbox.closest('.inaccessible')) {
 					e.preventDefault();
 				}
+			});
+		}
+	}
+}
+
+//==========================================================Rating==========================================================
+
+const ratings = document.querySelectorAll('.rating');
+
+if (ratings.length > 0) {
+	initRatings();
+}
+
+function initRatings() {
+	let ratingActive, ratingValue;
+	for (rating of ratings) {
+		initRating(rating);
+	}
+
+	// Инициализация конкретного рейтинга
+	function initRating(rating) {
+		initRatingVars(rating);
+
+		setRatingActiveWidth();
+
+		 if (rating.classList.contains('rating__set')) {
+			 setRating(rating);
+		 }
+	}
+
+	// Инициализация переменных
+	function initRatingVars(rating) {
+		ratingActive = rating.querySelector('.rating__active');
+		ratingValue = rating.querySelector('.rating__value');
+	}
+
+	// Изменение ширины активных звёзд
+	function setRatingActiveWidth(index = ratingValue.innerHTML) {
+		const ratingActiveWidth = index / 0.05;
+ 		ratingActive.style.width = `${ratingActiveWidth}%`;
+	}
+
+	// Возможность указывать оценку
+	function setRating(rating) {
+		const ratingItems = rating.querySelectorAll('.rating__item');
+		for (let index = 0; index < ratingItems.length; index++) {
+			const ratingItem = ratingItems[index];
+			ratingItem.addEventListener("mouseenter", function() {
+				initRatingVars(rating);
+
+				setRatingActiveWidth(ratingItem.value);
+			});
+			ratingItem.addEventListener("mouseleave", function() {
+				setRatingActiveWidth();
+			});
+			ratingItem.addEventListener("click", function() {
+				initRatingVars(rating);
+
+				ratingValue.innerHTML = index + 1;
+				setRatingActiveWidth();
 			});
 		}
 	}
