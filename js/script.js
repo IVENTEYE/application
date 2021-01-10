@@ -1153,8 +1153,8 @@ if (settingsButton) {
 	settingsButton.addEventListener('click', navSettings('.settings-button', '.content__side-settings'));
 }
 
-if (document.querySelector('.alerts__header-btn')) {
-	const alertsHeaderBtn = document.querySelector('.alerts__header-btn'),
+if (document.querySelector('.btn-header')) {
+	const alertsHeaderBtn = document.querySelector('.btn-header'),
 		  btnHeaderContent = document.querySelector('.btn-header__content');
 		  
 	alertsHeaderBtn.addEventListener('click', () => {
@@ -1162,7 +1162,7 @@ if (document.querySelector('.alerts__header-btn')) {
 	});
 
 	document.addEventListener('click', (e) => {
-		if (!e.target.closest('.alerts__header-btn')) {
+		if (!e.target.closest('.btn-header')) {
 			btnHeaderContent.classList.remove('active');
 		}
 		if (e.target.closest('.btn-header__content')) {
