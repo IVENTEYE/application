@@ -984,6 +984,33 @@ if (document.querySelectorAll('.tabs').length > 0) {
 	});
 }
 
+const eventsApplicationBtns = document.querySelectorAll('.events-application__btn'),
+	  eventsApplicationNavItems = document.querySelectorAll('.events-application__nav-item'),
+	  eventsApplicationTabcontent = document.querySelectorAll('.events-application__tabcontent');
+
+function clickBtn() {
+	for (eventsApplicationBtn of eventsApplicationBtns) {
+		eventsApplicationBtn.addEventListener('click', (e) => {
+			e.preventDefault();
+			const itemClass = e.target.getAttribute('data-button');
+
+			eventsApplicationNavItems.forEach(item => {
+				item.classList.remove('active');
+			});
+			eventsApplicationTabcontent.forEach(item => {
+				item.classList.remove('active');
+			});
+			document.querySelectorAll(`.${itemClass}`).forEach(item => {
+				item.classList.add('active');
+			});
+		});
+	}
+}
+
+if (eventsApplicationTabcontent.length > 0) {
+	clickBtn();
+}
+
 if (document.querySelectorAll('.works-tabnav').length > 0) {
 	const worksProduct = document.querySelectorAll('.works-tabcontent__item'),
 		worksNav = document.querySelectorAll('.works-tabnav__item');
@@ -1283,7 +1310,7 @@ function clickSubmit() {
 			e.preventDefault();
 			const itemClass = e.target.getAttribute('data-button');
 			const complated = e.target.getAttribute('data-complated');
-			
+
 			registrationTabnavItems.forEach(item => {
 				item.classList.remove('active');
 			});
@@ -1298,17 +1325,23 @@ function clickSubmit() {
 	}
 }
 
-// tabsNav.forEach(item => {
-// 	item.addEventListener('click', function (e) {
-// 		e.preventDefault();
-// 		const id = e.target.getAttribute('data-href');
+const selectHeaders = document.querySelectorAll('.select-header');
 
-// 		tabsNav.forEach(child => child.classList.remove('active'));
-// 		tabsProduct.forEach(child => child.classList.remove('active'));
-
-// 		item.classList.add('active');
-// 		document.getElementById(id).classList.add('active');
-// 	});
-// });
+if (selectHeaderCurrentInputs.length > 0) {
+	for (selectHeader of selectHeaders) {
+		const selectInput = selectHeader.querySelector('.select-header__current-input'),
+			  selectValue = selectHeader.querySelector('.select-header__current-value');
+		
+		if (selectInput) {
+			selectInput.addEventListener('input', () => {
+				if (!selectInput.value == '') {
+					selectValue.style.display = 'none';
+				} else {
+					selectValue.style.display = 'block';
+				}
+			});
+		}
+	}
+}
 
 
