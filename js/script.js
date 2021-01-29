@@ -1,14 +1,3 @@
-// const headerScroll = () => {
-// 	const header = document.querySelector('.header__bottom');
-// 	if (window.pageYOffset > 180) {
-// 		header.classList.add('fixed');
-// 	} else {
-// 		header.classList.remove('fixed');
-// 	}
-// };
-
-// window.addEventListener('scroll', headerScroll);
-
 if (document.querySelector('.menu-burger')) {
 	const menu = document.querySelector('.menu-burger'),
 		menuBody = document.querySelector('.menu-burger__body');
@@ -43,46 +32,6 @@ testWebP(function (support) {
 		document.querySelector('body').classList.add('no-webp');
 	}
 });
-
-// const animItems = document.querySelectorAll('.anim-items');
-
-// if (animItems.length > 0) {
-// 	const animOnScroll = () => {
-// 		for (animItem of animItems) {
-// 			const animItemHeight = animItem.offsetHeight;
-// 			const animItemOffset = offset(animItem).top;
-// 			const animStart = 7;
-
-// 			let animItemPoint = window.innerHeight - animItemHeight / animStart;
-
-// 			if (animItemHeight > window.innerHeight) {
-// 				animItemPoint = window.innerHeight - window.innerHeight / animStart;
-// 			}
-
-// 			if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
-// 				animItem.classList.add('active');
-// 			} else {
-// 				if (!animItem.classList.contains('anim-no-hide')) {
-// 					animItem.classList.remove('active');
-// 				}
-// 			}
-// 		}
-
-// 		function offset(el) {
-// 			const rect = el.getBoundingClientRect(),
-// 				scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-// 				scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-// 			return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-// 		}
-// 	};
-
-// 	window.addEventListener('scroll', animOnScroll);
-
-// 	setTimeout(() => {
-// 		animOnScroll();
-// 	}, 300);
-
-// }
 
 if (document.querySelectorAll('.slider__main').length > 0) {
 	$(function () {
@@ -1086,6 +1035,43 @@ if (document.querySelectorAll('.select').length > 0) {
 	select();
 }
 
+//====================================================selectInput===========================================================
+
+const selectHeaderCurrentInputs = document.querySelectorAll('.select-header__current-input');
+
+const selectInputs = () => {
+	const selectHeaders = document.querySelectorAll('.select-header'),
+	      selectItem = document.querySelectorAll('.select-body__item');
+
+	for (selectHeader of selectHeaders) {
+		const selectInput = selectHeader.querySelector('.select-header__current-input'),
+			  selectValue = selectHeader.querySelector('.select-header__current-value');
+		
+		if (selectInput) {
+			selectInput.addEventListener('input', () => {
+				if (!selectInput.value == '') {
+					selectValue.style.display = 'none';
+				} else {
+					selectValue.style.display = 'block';
+				}
+			});
+		}
+
+		selectItem.forEach(item => {
+			item.addEventListener('click', () => {
+				if (selectInput) {
+					selectValue.style.display = 'block';
+					selectInput.value = '';
+				}
+			});
+		});
+	}
+};
+
+if (selectHeaderCurrentInputs.length > 0) {
+	selectInputs();
+}
+
 //========================================================Spoils=============================================================
 
 if (document.querySelectorAll('.spoil').length > 0) {
@@ -1324,24 +1310,3 @@ function clickSubmit() {
 		});
 	}
 }
-
-const selectHeaders = document.querySelectorAll('.select-header');
-
-if (selectHeaderCurrentInputs.length > 0) {
-	for (selectHeader of selectHeaders) {
-		const selectInput = selectHeader.querySelector('.select-header__current-input'),
-			  selectValue = selectHeader.querySelector('.select-header__current-value');
-		
-		if (selectInput) {
-			selectInput.addEventListener('input', () => {
-				if (!selectInput.value == '') {
-					selectValue.style.display = 'none';
-				} else {
-					selectValue.style.display = 'block';
-				}
-			});
-		}
-	}
-}
-
-
