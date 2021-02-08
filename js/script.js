@@ -988,10 +988,12 @@ if (document.querySelectorAll('.select').length > 0) {
 		const findIcon = () => {
 			for (itSelect of selects) {
 				const selectArrow = itSelect.querySelector('.select-header__icon img');
-				if (itSelect.classList.contains('active')) {
-					selectArrow.classList.add('active');
-				} else {
-					selectArrow.classList.remove('active');
+				if (selectArrow) {
+					if (itSelect.classList.contains('active')) {
+						selectArrow.classList.add('active');
+					} else {
+						selectArrow.classList.remove('active');
+					}
 				}
 			}
 		};
