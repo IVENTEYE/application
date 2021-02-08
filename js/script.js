@@ -1019,7 +1019,9 @@ if (document.querySelectorAll('.select').length > 0) {
 					for (itSelect of selects) {
 						const selectArrow = itSelect.querySelector('.select-header__icon img');
 						itSelect.classList.remove('active');
-						selectArrow.classList.remove('active');
+						if (selectArrow) {
+							selectArrow.classList.remove('active');
+						}
 					}
 				}
 			});
