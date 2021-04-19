@@ -652,6 +652,7 @@ document.querySelectorAll('.tabnav-product__item').forEach(item => {
 				$('.slider__photo-main').slick({
 					slidesToShow: 1,
 					arrows: false,
+					adaptiveHeight: true,
 					infinite: false,
 					slidesToScroll: 1,
 					asNavFor: '.slider__photo-small',
@@ -845,15 +846,9 @@ if (popupLinks.length > 0) {
 	popupLinks.forEach(item => {
 		item.addEventListener('click', function (e) {
 			const popupName = item.getAttribute('href').replace('#', ''),
-			    popupPhotoActives = document.querySelectorAll('.popup__photo'),
 				currentPopup = document.getElementById(popupName);
 			popupOpen(currentPopup);
 			e.preventDefault();
-			for (popupPhotoActive of popupPhotoActives) {
-				if (popupPhotoActive.classList.contains('active')) {
-					body.classList.remove('lock');
-				}
-			}
 		});
 	});
 }
