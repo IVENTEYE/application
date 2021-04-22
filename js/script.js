@@ -649,53 +649,55 @@ document.querySelectorAll('.tabnav-product__item').forEach(item => {
 		const tabBlocks = document.querySelectorAll('.tabcontent-product__block');
 		for (tabBlock of tabBlocks) {
 			if (tabBlock.querySelector('.popup__photo')) {
-				$('.slider__photo-main').slick({
-					slidesToShow: 1,
-					arrows: false,
-					adaptiveHeight: true,
-					infinite: false,
-					slidesToScroll: 1,
-					asNavFor: '.slider__photo-small',
-				});
-				$('.slider__photo-small').slick({
-					slidesToShow: 5,
-					arrows: false,
-					asNavFor: '.slider__photo-main',
-					focusOnSelect: true,
-					infinite: false,
-					slidesToScroll: 1,
-					responsive: [
-						{
-							breakpoint: 376,
-							settings: {
-								slidesToShow: 2,
-							}
-						},
-						{
-							breakpoint: 426,
-							settings: {
-								slidesToShow: 3,
-							}
-						},
-						{
-							breakpoint: 520,
-							settings: {
-								slidesToShow: 4,
-							}
-						},
-						{
-							breakpoint: 769,
-							settings: {
-								slidesToShow: 5,
-							}
-						},
-						{
-							breakpoint: 840,
-							settings: {
-								slidesToShow: 4,
-							}
-						},
-					]
+				$(function() {
+					$('.slider__photo-main').slick({
+						slidesToShow: 1,
+						arrows: false,
+						adaptiveHeight: true,
+						infinite: false,
+						slidesToScroll: 1,
+						asNavFor: '.slider__photo-small',
+					});
+					$('.slider__photo-small').slick({
+						slidesToShow: 5,
+						arrows: false,
+						asNavFor: '.slider__photo-main',
+						focusOnSelect: true,
+						infinite: false,
+						slidesToScroll: 1,
+						responsive: [
+							{
+								breakpoint: 376,
+								settings: {
+									slidesToShow: 2,
+								}
+							},
+							{
+								breakpoint: 426,
+								settings: {
+									slidesToShow: 3,
+								}
+							},
+							{
+								breakpoint: 520,
+								settings: {
+									slidesToShow: 4,
+								}
+							},
+							{
+								breakpoint: 769,
+								settings: {
+									slidesToShow: 5,
+								}
+							},
+							{
+								breakpoint: 840,
+								settings: {
+									slidesToShow: 4,
+								}
+							},
+						]
+					});
 				});
 			}
 		}
