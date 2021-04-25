@@ -1139,22 +1139,24 @@ if (selectHeaderCurrentInputs.length > 0) {
 
 //========================================================Spoils=============================================================
 
-if (document.querySelectorAll('.spoil').length > 0) {
-	const spoils = document.querySelectorAll('.spoil');
-	for (spoil of spoils) {
-		const spoilHeader = spoil.querySelector('.spoil-header'),
-			spoilbody = spoil.querySelector('.spoiler-body'),
-			spoilClose = spoil.querySelector('.spoil-close');
-		if (spoilHeader.classList.contains('active')) {
-			$(spoilbody).slideDown();
+$(function() {
+	if (document.querySelectorAll('.spoil').length > 0) {
+		const spoils = document.querySelectorAll('.spoil');
+		for (spoil of spoils) {
+			const spoilHeader = spoil.querySelector('.spoil-header'),
+				spoilbody = spoil.querySelector('.spoiler-body'),
+				spoilClose = spoil.querySelector('.spoil-close');
+			if (spoilHeader.classList.contains('active')) {
+				$(spoilbody).slideDown();
+			}
+			spoilHeader.addEventListener('click', (e) => {
+				spoilHeader.classList.toggle('active');
+				$(spoilbody).slideToggle();
+	
+			});
 		}
-		spoilHeader.addEventListener('click', (e) => {
-			spoilHeader.classList.toggle('active');
-			$(spoilbody).slideToggle();
-
-		});
 	}
-}
+});
 
 //=====================================================inputDown=======================================================
 
