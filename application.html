@@ -1,1 +1,112 @@
-<!DOCTYPE html><html lang="ru"><head>    <meta charset="UTF-8"/>    <meta name="viewport" content="width=device-width, initial-scale=1">    <title>Добавить заявку</title>    <link rel="stylesheet" href="css/style.min.css"/>    <script src="js/application.js" defer></script></head><body>    <div class="application active" id="application-1">        <div class="application__container container">            <div class="application__info">                <div class="application__info-title">Добавить заявку</div>                <div class="application__info-subtitle">Фестиваль позитивного идейного искусства «ВРЕМЯ, ВПЕРЕД!»</div>                <div class="application__info-text">Введите эл. почту, чтобы прислать Вас код для входа.</div>            </div>            <form action="#" class="application__form">                <div class="application__form-input">                    <input type="email" class="application-input" placeholder="Введите эл. почту (*******@****.***)">                </div>                <button type="submit" data-href="application-2" class="application__form-submit">Продолжить</button>            </form>        </div>    </div>    <div class="application" id="application-2">        <div class="application__container container">            <div class="application__info">                <div class="application__info-title">Добавить заявку</div>                <div class="application__info-subtitle">Фестиваль позитивного идейного искусства «ВРЕМЯ, ВПЕРЕД!»</div>                <div class="application__info-text">Введите код, который был отправлен на эл адрес artofartart@yandex.ru</div>            </div>            <form action="#" class="application__form">                <div class="application__form-input">                    <input type="text" class="application-input" placeholder="Введите код">                </div>                <button type="submit" data-href="application-3" class="application__form-submit">Продолжить</button>            </form>        </div>    </div>    <div class="application" id="application-3">        <div class="application__container container">            <div class="application__info">                <div class="application__info-title">Добавить заявку</div>                <div class="application__info-subtitle">                    Уважаемые участники проекта, для продолжения необходимо ознакомиться со всеми условиями                </div>            </div>            <form action="#" class="application__form application__form-checks">                <div class="application__form-checkbox">                    <label class="application-checkbox">                        <input type="checkbox" class="input-checkbox">                        <div class="application-input"></div>                        <span>Я принимаю на себя ответственность....</span>                    </label>                </div>                <div class="application__form-checkbox">                    <label class="application-checkbox">                        <input type="checkbox" class="input-checkbox">                        <div class="application-input"></div>                        <span>                            Я представляю организаторам выставки право                            на использовние ...                        </span>                    </label>                </div>                <div class="application__form-checkbox">                    <label class="application-checkbox">                        <input type="checkbox" class="input-checkbox">                        <div class="application-input"></div>                        <span>                            Я ознакомился с ПОЛОЖЕНИЕМ О КОНКУРСЕ и даю свое согласие на обработку персональных данный                        </span>                    </label>                </div>                <button type="submit" data-href="application-4" class="application__form-submit">Продолжить</button>            </form>        </div>    </div>    <div class="application" id="application-4">        <div class="application__container container">            <div class="application__info">                <div class="application__info-title">Добавить заявку</div>                <div class="application__info-subtitle">                    Уважаемые участники проекта, для продолжения необходимо ознакомиться со всеми условиями                </div>            </div>            <form action="#" class="application__form">                <div class="application__form-items">                    <div class="application__form-radio">                        <label class="application__radio">                            <input type="radio" name="radio" value="Я ПРЕДСТАВИТЕЛЬ*">                            <div class="application__radio-input">Я ПРЕДСТАВИТЕЛЬ*</div>                        </label>                        <div class="application__form-text">ПРЕДСТАВИТЕЛЬ* - информация</div>                    </div>                    <div class="application__form-radio">                        <label class="application__radio">                            <input type="radio" name="radio" value="Я УЧАСТНИК**">                            <div class="application__radio-input">Я УЧАСТНИК**</div>                        </label>                        <div class="application__form-text">                            УЧАСТНИК** - Если Вам исполнилось 14 лет, и Вы представляете свои работы                        </div>                    </div>                </div>                <button type="submit" class="application__form-submit">Продолжить</button>            </form>        </div>    </div></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Добавить заявку</title>
+    <link rel="stylesheet" href="css/style.min.css"/>
+    <script src="js/application.js" defer></script>
+</head>
+<body>
+    <div class="application active" id="application-1">
+        <div class="application__container container">
+            <div class="application__info">
+                <div class="application__info-title">Добавить заявку</div>
+                <div class="application__info-subtitle">Фестиваль позитивного идейного искусства «ВРЕМЯ, ВПЕРЕД!»</div>
+                <div class="application__info-text">Введите эл. почту, чтобы прислать Вас код для входа.</div>
+            </div>
+            <form action="#" class="application__form">
+                <div class="application__form-input">
+                    <input type="email" class="application-input" placeholder="Введите эл. почту (*******@****.***)">
+                </div>
+                <button type="submit" data-href="application-2" class="application__form-submit">Продолжить</button>
+            </form>
+        </div>
+    </div>
+    <div class="application" id="application-2">
+        <div class="application__container container">
+            <div class="application__info">
+                <div class="application__info-title">Добавить заявку</div>
+                <div class="application__info-subtitle">Фестиваль позитивного идейного искусства «ВРЕМЯ, ВПЕРЕД!»</div>
+                <div class="application__info-text">Введите код, который был отправлен на эл адрес artofartart@yandex.ru</div>
+            </div>
+            <form action="#" class="application__form">
+                <div class="application__form-input">
+                    <input type="text" class="application-input" placeholder="Введите код">
+                </div>
+                <button type="submit" data-href="application-3" class="application__form-submit">Продолжить</button>
+            </form>
+        </div>
+    </div>
+    <div class="application" id="application-3">
+        <div class="application__container container">
+            <div class="application__info">
+                <div class="application__info-title">Добавить заявку</div>
+                <div class="application__info-subtitle">
+                    Уважаемые участники проекта, для продолжения необходимо ознакомиться со всеми условиями
+                </div>
+            </div>
+            <form action="#" class="application__form application__form-checks">
+                <div class="application__form-checkbox">
+                    <label class="application-checkbox">
+                        <input type="checkbox" class="input-checkbox">
+                        <div class="application-input"></div>
+                        <span>Я принимаю на себя ответственность....</span>
+                    </label>
+                </div>
+                <div class="application__form-checkbox">
+                    <label class="application-checkbox">
+                        <input type="checkbox" class="input-checkbox">
+                        <div class="application-input"></div>
+                        <span>
+                            Я представляю организаторам выставки право
+                            на использовние ...
+                        </span>
+                    </label>
+                </div>
+                <div class="application__form-checkbox">
+                    <label class="application-checkbox">
+                        <input type="checkbox" class="input-checkbox">
+                        <div class="application-input"></div>
+                        <span>
+                            Я ознакомился с ПОЛОЖЕНИЕМ О КОНКУРСЕ и даю свое согласие на обработку персональных данный
+                        </span>
+                    </label>
+                </div>
+                <button type="submit" data-href="application-4" class="application__form-submit">Продолжить</button>
+            </form>
+        </div>
+    </div>
+    <div class="application" id="application-4">
+        <div class="application__container container">
+            <div class="application__info">
+                <div class="application__info-title">Добавить заявку</div>
+                <div class="application__info-subtitle">
+                    Уважаемые участники проекта, для продолжения необходимо ознакомиться со всеми условиями
+                </div>
+            </div>
+            <form action="#" class="application__form">
+                <div class="application__form-items">
+                    <div class="application__form-radio">
+                        <label class="application__radio">
+                            <input type="radio" name="radio" value="Я ПРЕДСТАВИТЕЛЬ*">
+                            <div class="application__radio-input">Я ПРЕДСТАВИТЕЛЬ*</div>
+                        </label>
+                        <div class="application__form-text">ПРЕДСТАВИТЕЛЬ* - информация</div>
+                    </div>
+                    <div class="application__form-radio">
+                        <label class="application__radio">
+                            <input type="radio" name="radio" value="Я УЧАСТНИК**">
+                            <div class="application__radio-input">Я УЧАСТНИК**</div>
+                        </label>
+                        <div class="application__form-text">
+                            УЧАСТНИК** - Если Вам исполнилось 14 лет, и Вы представляете свои работы
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="application__form-submit">Продолжить</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
