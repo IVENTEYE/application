@@ -45,6 +45,14 @@ if (document.querySelectorAll('.slider__main').length > 0) {
 			slidesToShow: 1,
 			prevArrow: $('.slider__main-arrows-item--prev'),
 			nextArrow: $('.slider__main-arrows-item--next'),
+			responsive: [
+				{
+					breakpoint: 376,
+					settings: {
+						arrows: false
+					}
+				},
+			],
 		});
 	});
 }
