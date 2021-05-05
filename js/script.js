@@ -529,13 +529,21 @@ if (document.querySelectorAll('.parters__slider').length > 0) {
 					}
 				},
 				{
-					breakpoint: 376,
+					breakpoint: 426,
 					settings: {
-						slidesToShow: 2,
+						slidesToShow: 1,
 						centerMode: true,
 						variableWidth: true,
 					}
 				},
+				// {
+				// 	breakpoint: 376,
+				// 	settings: {
+				// 		slidesToShow: 2,
+				// 		centerMode: true,
+				// 		variableWidth: true,
+				// 	}
+				// },
 			]
 		});
 	});
