@@ -1425,22 +1425,24 @@ $(document).ready(function() {
 	}
 });
 
-function heightCheck() {
-	if (window.innerWidth > 781) {
-		let cardHeight;
-		document.querySelectorAll('.author__card-element').forEach(item => {
-			cardHeight = item.clientHeight;
-			item.closest('.author__card-block').style.height = cardHeight + "px";
-		});
-	} else {
-		document.querySelectorAll('.author__card-element').forEach(item => {
-			item.closest('.author__card-block').style.height = "auto";
-		});
+window.addEventListener('load', () => {
+	function heightCheck() {
+		if (window.innerWidth > 781) {
+			let cardHeight;
+			document.querySelectorAll('.author__card-element').forEach(item => {
+				cardHeight = item.clientHeight;
+				item.closest('.author__card-block').style.height = cardHeight + "px";
+			});
+		} else {
+			document.querySelectorAll('.author__card-element').forEach(item => {
+				item.closest('.author__card-block').style.height = "auto";
+			});
+		}
 	}
-}
-
-heightCheck();
-
-window.addEventListener('resize', () => {
+	
 	heightCheck();
+	
+	window.addEventListener('resize', () => {
+		heightCheck();
+	});
 });
