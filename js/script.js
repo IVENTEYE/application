@@ -665,7 +665,7 @@ document.querySelectorAll('.tabnav-product__item').forEach(item => {
 		const tabBlocks = document.querySelectorAll('.tabcontent-product__block');
 		for (tabBlock of tabBlocks) {
 			if (tabBlock.querySelector('.popup__photo')) {
-				$(function() {
+				$(function () {
 					$('.slider__photo-main').slick({
 						slidesToShow: 1,
 						arrows: false,
@@ -1011,8 +1011,8 @@ if (document.querySelectorAll('.tabs').length > 0) {
 }
 
 const eventsApplicationBtns = document.querySelectorAll('.events-application__btn'),
-	  eventsApplicationNavItems = document.querySelectorAll('.events-application__nav-item'),
-	  eventsApplicationTabcontent = document.querySelectorAll('.events-application__tabcontent');
+	eventsApplicationNavItems = document.querySelectorAll('.events-application__nav-item'),
+	eventsApplicationTabcontent = document.querySelectorAll('.events-application__tabcontent');
 
 function clickBtn() {
 	for (eventsApplicationBtn of eventsApplicationBtns) {
@@ -1122,12 +1122,12 @@ const selectHeaderCurrentInputs = document.querySelectorAll('.select-header__cur
 
 const selectInputs = () => {
 	const selectHeaders = document.querySelectorAll('.select-header'),
-	      selectItem = document.querySelectorAll('.select-body__item');
+		selectItem = document.querySelectorAll('.select-body__item');
 
 	for (selectHeader of selectHeaders) {
 		const selectInput = selectHeader.querySelector('.select-header__current-input'),
-			  selectValue = selectHeader.querySelector('.select-header__current-value');
-		
+			selectValue = selectHeader.querySelector('.select-header__current-value');
+
 		if (selectInput) {
 			selectInput.addEventListener('input', () => {
 				if (!selectInput.value == '') {
@@ -1155,7 +1155,7 @@ if (selectHeaderCurrentInputs.length > 0) {
 
 //========================================================Spoils=============================================================
 
-$(function() {
+$(function () {
 	if (document.querySelectorAll('.spoil').length > 0) {
 		const spoils = document.querySelectorAll('.spoil');
 		for (spoil of spoils) {
@@ -1168,7 +1168,7 @@ $(function() {
 			spoilHeader.addEventListener('click', (e) => {
 				spoilHeader.classList.toggle('active');
 				$(spoilbody).slideToggle();
-	
+
 			});
 		}
 	}
@@ -1188,28 +1188,6 @@ if (isMobile.any()) {
 
 // =======================================================================================
 
-const hoverMenu = (element, dropdown) => {
-	if (!isMobile.any()) {
-		element.forEach(item => {
-			const dropdownElement = item.querySelector(dropdown);
-			item.addEventListener('mouseenter', () => {
-				dropdownElement.classList.add('active');
-			});
-			item.addEventListener('mouseleave', () => {
-				dropdownElement.classList.remove('active');
-			});
-		});
-	} else {
-		element.forEach(item => {
-			const dropdownElement = item.querySelector(dropdown);
-			item.addEventListener('click', (e) => {
-				e.preventDefault();
-				dropdownElement.classList.toggle('active');
-			});
-		});
-	}
-};
-
 const navSettings = (settingsButton, settings) => {
 	document.querySelector(settingsButton).addEventListener('click', () => {
 		document.querySelector(settingsButton).classList.toggle('active');
@@ -1224,25 +1202,42 @@ const menuTop = document.querySelectorAll('.menu-top'),
 	actionsBottomAvatar = document.querySelectorAll('.actions-bottom__avatar'),
 	settingsButton = document.querySelector('.settings-button');
 
-
-
-menuTop.forEach(item => {
-	item.addEventListener('mouseenter', hoverMenu(menuTop, '.menu-top__body'));
-});
-
-navBottomItem.forEach(item => {
-	item.addEventListener('mouseenter', hoverMenu(navBottomItem, '.content-item'));
-	if (isMobile.any()) {
-		item.addEventListener('click', () => {
-			const dropdownElement = item.querySelector('.content-item');
-			dropdownElement.classList.toggle('active');
+	document.querySelectorAll(".menu-item").forEach(item => {
+		item.addEventListener('click', (e) => {
+			if (window.innerWidth < 980 && isMobile.any() || window.innerWidth > 980 && isMobile.any()) {
+				if (item.classList.contains('active')) {
+					item.classList.remove('active');
+				} else {
+					document.querySelectorAll(".menu-item.active").forEach(item => {
+						item.classList.remove('active');
+					});
+					item.classList.add('active');
+				}
+				if (item.querySelector('.menu-item__content').classList.contains('active')) {
+					item.querySelector('.menu-item__content').classList.remove('active');
+				} else {
+					document.querySelectorAll(".menu-item__content.active").forEach(item => {
+						item.classList.remove('active');
+					});
+					item.querySelector('.menu-item__content').classList.add('active');
+				}
+			}
 		});
-	}
-});
+	});
 
-actionsBottomAvatar.forEach(item => {
-	item.addEventListener('mouseenter', hoverMenu(actionsBottomAvatar, '.menu-avatar'));
-});
+function documentAction(e) {
+	const targetElement = e.target;
+	if (!targetElement.closest('.menu-item')) {
+		if (document.querySelector('.menu-item__content.active')) {
+			document.querySelector('.menu-item__content.active').classList.remove('active');
+		}
+	}
+	if (targetElement.closest('.menu-item__content')) {
+		return targetElement.closest('.menu-item__content').classList.add('active');
+	}
+}
+
+document.addEventListener('click', documentAction);
 
 if (settingsButton) {
 	settingsButton.addEventListener('click', navSettings('.settings-button', '.content__side-settings'));
@@ -1262,6 +1257,9 @@ if (document.querySelector('.btn-header')) {
 		}
 		if (e.target.closest('.btn-header__content')) {
 			btnHeaderContent.classList.add('active');
+		}
+		if (e.target.closest('.btn-header__content a')) {
+			btnHeaderContent.classList.remove('active');
 		}
 	});
 }
@@ -1400,7 +1398,7 @@ window.addEventListener('resize', function () {
 
 function adaptiveMenu(w, h) {
 	if (w > 1480) {
-		document.querySelector('.search-input').addEventListener('keydown', function(e) {
+		document.querySelector('.search-input').addEventListener('keydown', function (e) {
 			if (e.target) {
 				this.classList.add('active');
 			}
@@ -1415,3 +1413,34 @@ function adaptive_function() {
 }
 
 adaptive_function();
+
+// Mouse scroll
+
+$(document).ready(function() {
+	if (window.innerWidth > 781) {
+		$('.author__card-row').mousewheel(function(e, delta) {
+			this.scrollLeft -= (delta * 40);
+			e.preventDefault();
+		});
+	}
+});
+
+function heightCheck() {
+	if (window.innerWidth > 781) {
+		let cardHeight;
+		document.querySelectorAll('.author__card-element').forEach(item => {
+			cardHeight = item.clientHeight;
+			item.closest('.author__card-block').style.height = cardHeight + "px";
+		});
+	} else {
+		document.querySelectorAll('.author__card-element').forEach(item => {
+			item.closest('.author__card-block').style.height = "auto";
+		});
+	}
+}
+
+heightCheck();
+
+window.addEventListener('resize', () => {
+	heightCheck();
+});
