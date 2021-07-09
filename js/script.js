@@ -13,6 +13,23 @@ if (document.querySelector('.menu-burger')) {
 	});
 }
 
+// Header fixed
+const headerBottom = document.querySelector('.header__bottom');
+
+const scrollHeader = () => {
+	if (window.pageYOffset > 180) {
+		headerBottom.classList.add('fixed');
+		document.querySelector('.header__top').style.marginBottom = 108 + 'px';
+	} else {
+		document.querySelector('.header__top').style.marginBottom = 0;
+		headerBottom.classList.remove('fixed');
+	}
+};
+
+if (headerBottom) {
+	window.addEventListener('scroll', scrollHeader);
+}
+
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
 function testWebP(callback) {
@@ -1416,33 +1433,33 @@ adaptive_function();
 
 // Mouse scroll
 
-$(document).ready(function() {
-	if (window.innerWidth > 781) {
-		$('.author__card-row').mousewheel(function(e, delta) {
-			this.scrollLeft -= (delta * 40);
-			e.preventDefault();
-		});
-	}
-});
+// $(document).ready(function() {
+// 	if (window.innerWidth > 781) {
+// 		$('.author__card-row').mousewheel(function(e, delta) {
+// 			this.scrollLeft -= (delta * 40);
+// 			e.preventDefault();
+// 		});
+// 	}
+// });
 
-window.addEventListener('load', () => {
-	function heightCheck() {
-		if (window.innerWidth > 781) {
-			let cardHeight;
-			document.querySelectorAll('.author__card-element').forEach(item => {
-				cardHeight = item.clientHeight;
-				item.closest('.author__card-block').style.height = cardHeight + "px";
-			});
-		} else {
-			document.querySelectorAll('.author__card-element').forEach(item => {
-				item.closest('.author__card-block').style.height = "auto";
-			});
-		}
-	}
+// window.addEventListener('load', () => {
+// 	function heightCheck() {
+// 		if (window.innerWidth > 781) {
+// 			let cardHeight;
+// 			document.querySelectorAll('.author__card-element').forEach(item => {
+// 				cardHeight = item.clientHeight;
+// 				item.closest('.author__card-block').style.height = cardHeight + "px";
+// 			});
+// 		} else {
+// 			document.querySelectorAll('.author__card-element').forEach(item => {
+// 				item.closest('.author__card-block').style.height = "auto";
+// 			});
+// 		}
+// 	}
 	
-	heightCheck();
+// 	heightCheck();
 	
-	window.addEventListener('resize', () => {
-		heightCheck();
-	});
-});
+// 	window.addEventListener('resize', () => {
+// 		heightCheck();
+// 	});
+// });
